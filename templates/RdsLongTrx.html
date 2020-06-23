@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<style type="text/css">
+		#hor-minimalist-b
+		{
+			font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+			font-size: 14px;
+			background: #fff;
+			margin: 10px;
+			width: auto;
+			border-collapse: collapse;
+			text-align: center;
+		}
+		#hor-minimalist-b th
+		{
+			font-size: 14px;
+			font-weight: normal;
+			color: #039;
+			padding: 10px 8px;
+			border-bottom: 2px solid #6678b1;
+		}
+		#hor-minimalist-b td
+		{
+			border-bottom: 1px solid #ccc;
+			color: #669;
+			padding: 6px 8px;
+		}
+		#hor-minimalist-b tbody tr:hover td
+		{
+			color: #009;
+		}
+	</style>
+</head>
+<body>
+<table id="hor-minimalist-b" style="table-layout:fixed;word-break:break-all;">
+	<thead>
+	<tr>
+		<th width="3%">序号</th>
+		<th width="5.5%">数据库地址</th>
+		<th width="5.5%">线程号</th>
+		<th width="5.5%">查询用户</th>
+		<th>语句详情</th>
+		<th width="9%">来访地址</th>
+		<th width="9%">数据库</th>
+		<th width="4.5%">执行时间</th>
+		<th width="5.5%">当前MEM(%)</th>
+		<th width="5.5%">当前CPU(%)</th>
+	</tr>
+	</thead>
+	<tbody>
+	{{ range $i,$v := . }}
+		<tr>
+			<td title="序号" width="3%">{{ $i | format_id }}</td>
+			<td title="数据库地址" width="8.5%">{{ .Ip }}</td>
+			<td title="线程号" width="8.5%">{{ .Id }}</td>
+			<td title="查询用户" width="10%">{{ .User }}</td>
+			<td title="语句详情" style="text-align: left">{{ .Info }}</td>
+			<td title="来访地址" width="9.5%">{{ .Host }}</td>
+			<td title="数据库" width="9.5%">{{ .Db }}</td>
+			<td title="执行时间" width="4.5%">{{ .Time }}</td>
+			<td title="当前MEM(%)" width="5.5%">{{ .Cpu | printf "%.1f" }}</td>
+			<td title="当前CPU(%)" width="5.5%">{{ .Mem | printf "%.1f"}}</td>
+		</tr>
+	{{ end }}
+	</tbody>
+</table>
+</body>
+</html>
+        
