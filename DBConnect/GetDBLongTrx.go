@@ -17,7 +17,7 @@ type LongTrx struct {
 }
 
 func GetLongTrx(sqltime string,dbinstance string) (result []LongTrx){
-	dbpath:= fmt.Sprintf("exporter:Haier@123@tcp(%s"+")/mysql?charset=utf8",dbinstance)
+	dbpath:= fmt.Sprintf("exporter:123456@tcp(%s"+")/mysql?charset=utf8",dbinstance)
 	//打开数据库
 	//DSN数据源字符串：用户名:密码@协议(地址:端口)/数据库?参数=参数值
 	db, err := sql.Open("mysql", dbpath)
