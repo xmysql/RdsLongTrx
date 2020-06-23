@@ -18,7 +18,7 @@
 ```bash
 - 程序开发的golang版本:go1.14.2,请自行安装
 - 程序监控需要创建mysql用户(程序写死)
-grant select, replication slave , replication client on *.* to 'export'@'%' identified '123456'
+grant select, replication slave , replication client on *.* to 'exporter'@'%' identified '123456'
 - 编译项目
 #go build RdsLongTrxSql.go
 ```
@@ -40,4 +40,9 @@ Flags:
       --email.from=""        邮件发送方
       --email.password=""    邮件发送方密码
       --version              Show application version.
+```
+
+参数示例
+```bash
+./RdsLongTrxSql --accessKeyId="xxxxxxxx" --accessKeySecret="xxxxxx" --regionId="cn-beijing" --DBInstance="rr-xxxxxxxxxx.mysql.rds.aliyuncs.com:3306,rm-xxxxxxxxxxx.mysql.rds.aliyuncs.com:3306" --QueryTimes="0" --emailRecivers="xxxxx@xxxx.com" --email.serverHost="smtp.qq.com" --email.serverPort=465 --email.from="xxxxxxx@qq.com"  --email.password="xxxxxxxx"
 ```
