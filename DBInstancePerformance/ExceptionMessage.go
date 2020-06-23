@@ -182,27 +182,36 @@ func SendLongTrxMail(path *PerformancePath)  {
 	}
 
 
-	iops,errio:=strconv.ParseFloat(strings.TrimSpace(sqlrequest[0].Iops),64)
-	cpu,errcpu:=strconv.ParseFloat(strings.TrimSpace(sqlrequest[0].Cpu),64)
-	mem,errmem:=strconv.ParseFloat(strings.TrimSpace(sqlrequest[0].Mem),64)
-	if errio != nil {
-		fmt.Println(errio)
-	}
-	if errcpu != nil {
-		fmt.Println(errcpu)
-	}
-	if errmem != nil {
-		fmt.Println(errmem)
-	}
-	if iops >= 12000.00 || cpu >= 90.00 || mem > 90.00 {
-		err := mail.SendEmail("LongTrx异常", rend_result.String(),"")
-		if err != nil {
-			fmt.Println(err)
+	if len(sqlrequest) >= 1 {
+
+		iops, errio := strconv.ParseFloat(strings.TrimSpace(sqlrequest[0].Iops), 64)
+		cpu, errcpu := strconv.ParseFloat(strings.TrimSpace(sqlrequest[0].Cpu), 64)
+		mem, errmem := strconv.ParseFloat(strings.TrimSpace(sqlrequest[0].Mem), 64)
+		if errio != nil {
+			fmt.Println(errio)
+		}
+		if errcpu != nil {
+			fmt.Println(errcpu)
+		}
+		if errmem != nil {
+			fmt.Println(errmem)
+		}
+		if iops >= 12000.00 || cpu >= 90.00 || mem > 90.00 {
+			err := mail.SendEmail("LongTrx异常", rend_result.String(), "")
+			if err != nil {
+				fmt.Println(err)
+			}
+
+		} else {
+			log, err := fmt.Printf("%s数据库"+"%s资源正常", path.DBInstance, time.Now().Local().Format("2006-01-02 15:04"))
+			if err != nil {
+				fmt.Println(err)
+			}
+			fmt.Println(log)
 		}
 
 	}else {
-		
-		log,err:=fmt.Printf("%s数据库"+"%s资源正常", path.DBInstance, time.Now().Local().Format("2006-01-02 15:04"))
+		log, err := fmt.Printf("%s数据库"+"%s资源正常", path.DBInstance, time.Now().Local().Format("2006-01-02 15:04"))
 		if err != nil {
 			fmt.Println(err)
 		}
