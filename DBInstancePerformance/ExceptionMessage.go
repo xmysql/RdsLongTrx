@@ -201,7 +201,12 @@ func SendLongTrxMail(path *PerformancePath)  {
 		}
 
 	}else {
-		fmt.Println("数据库资源正常")
+		
+		log,err:=fmt.Printf("%s数据库"+"%s资源正常", path.DBInstance, time.Now().Local().Format("2006-01-02 15:04"))
+		if err != nil {
+			fmt.Println(err)
+		}
+		fmt.Println(log)
 	}
 
 
