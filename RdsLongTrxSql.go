@@ -32,7 +32,7 @@ func main() {
 	DbinstanceCount := len(mail.Get_Dbinstance(db))
 	dbs := mail.Get_Dbinstance(db)
 	if DbinstanceCount >= 1 {
-		for  i = 0; i < DbinstanceCount ;i++{
+		for  i = 0; i < DbinstanceCount ;{
 			p := DBInstancePerformance.InitPerformancePath()
 			if p.AegionId == "" {
 				p.AegionId = *regionId
@@ -65,7 +65,8 @@ func main() {
 				p.EmailServerHost = *emailServerHost
 			}
 			DBInstancePerformance.SendLongTrxMail(p)
-			time.Sleep(5 * time.Millisecond)
+			time.Sleep(1000 * time.Millisecond)
+			i++
 		}
 	}
 
