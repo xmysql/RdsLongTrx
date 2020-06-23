@@ -44,5 +44,9 @@ Flags:
 
 参数示例
 ```bash
-./RdsLongTrxSql --accessKeyId="xxxxxxxx" --accessKeySecret="xxxxxx" --regionId="cn-beijing" --DBInstance="rr-xxxxxxxxxx.mysql.rds.aliyuncs.com:3306,rm-xxxxxxxxxxx.mysql.rds.aliyuncs.com:3306" --QueryTimes="0" --emailRecivers="xxxxx@xxxx.com" --email.serverHost="smtp.qq.com" --email.serverPort=465 --email.from="xxxxxxx@qq.com"  --email.password="xxxxxxxx"
+./RdsLongTrxSql --accessKeyId="xxxxxxxx" --accessKeySecret="xxxxxx" --regionId="cn-beijing" 
+--DBInstance="rr-xxxxxxxxxx.mysql.rds.aliyuncs.com:3306,rm-xxxxxxxxxxx.mysql.rds.aliyuncs.com:3306" 
+--QueryTimes="0" --emailRecivers="xxxxx@xxxx.com" 
+--email.serverHost="smtp.qq.com" --email.serverPort=465
+--email.from="xxxxxxx@qq.com"  --email.password="xxxxxxxx"
 ```
